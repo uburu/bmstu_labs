@@ -22,7 +22,7 @@ void printMatrix(double** data, int n, int m){
 }
 
 // умножение матриц
-void multiply(int n1, int m1, double **a, int n2, int m2, double **b, double **&result)
+void multiply(int n1, int m1, double **a, int m2, double **b, double **&result)
 {
     for (int i = 0; i < n1; i++)
     {
@@ -259,7 +259,7 @@ void scale(double x, double y, double z, point_t *&obj, int amount_of_dots){
 		// printMatrix(tmpDot, tmpN, tmpM);
 		// std::cout<< "МАТРИЦА SCALE: " << "\n";
 		// printMatrix(scaleMatrix, N, N);
-		multiply(tmpN, tmpM, tmpDot, N, N, scaleMatrix, tmpResult);
+		multiply(tmpN, tmpM, tmpDot, N, scaleMatrix, tmpResult);
 		// std::cout << "RESULT: ";
 		// printMatrix(tmpResult, tmpN, tmpM);
 		// std::cout << "--------------------------------------"<<"\n";
@@ -295,8 +295,8 @@ void rotate(double x_angle, double y_angle, double z_angle, point_t *&obj, int a
 	// std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << "\n";
 
 	// итоговая матрица поворота = z_rotat_matrix * (y_rotate_matrix * x_rotate_matrix)
-	multiply(N, N, y_rotate_matrix, N, N, x_rotate_matrix, y_x_result);
-	multiply(N, N, z_rotate_matrix, N, N, y_x_result, z_y_x_result);
+	multiply(N, N, y_rotate_matrix, N, x_rotate_matrix, y_x_result);
+	multiply(N, N, z_rotate_matrix, N, y_x_result, z_y_x_result);
 	// std::cout<< "y_x_result: " << "\n";
 	// printMatrix(y_x_result, N, N);
 	// std::cout<< "z_y_x_result: " << "\n";
@@ -314,7 +314,7 @@ void rotate(double x_angle, double y_angle, double z_angle, point_t *&obj, int a
 		// printMatrix(tmpDot, tmpN, tmpM);
 		// std::cout<< "МАТРИЦА rotate: " << "\n";
 		// printMatrix(z_y_x_result, N, N);
-		multiply(tmpN, tmpM, tmpDot, N, N, z_y_x_result, tmpResult);
+		multiply(tmpN, tmpM, tmpDot, N, z_y_x_result, tmpResult);
 		// std::cout << "RESULT: ";
 		// printMatrix(tmpResult, tmpN, tmpM);
 		// std::cout << "--------------------------------------"<<"\n";
@@ -337,7 +337,7 @@ void move(double dx, double dy, double dz, point_t *&obj, int amount_of_dots){
 }
 
 int main(){
-	char file_path[] = "cube1.txt";
+	char file_path[] = "new.txt";
 	point_t *v_obj;
 	polygon_t *f_obj;
 	int amount_of_dots;
@@ -347,7 +347,7 @@ int main(){
 	// f_obj = read_f_points(file_path); // читаем номера точек для полигона
 
 	read_v_points(v_obj, amount_of_dots, file_path);
-	read_f_points(f_obj, amount_of_polygons, file_path);
+	// read_f_points(f_obj, amount_of_polygons, file_path);
 
 	// std::cout << amount_of_dots << "\n";
 	// std::cout << amount_of_polygons << "\n";
@@ -366,10 +366,14 @@ int main(){
 	// std::cout << v_obj[1].x << " " << v_obj[1].y << " " << v_obj[1].z << "\n";
 
 	// проверочка rotate
-	// double rotate_x = 0, rotate_y = 30, rotate_z = 0;
-	// rotate(rotate_x, rotate_y, rotate_z, v_obj, amount_of_dots);
+	double rotate_x = 0, rotate_y = 30, rotate_z = 0;
+	rotate(rotate_x, rotate_y, rotate_z, v_obj, amount_of_dots);
 	// std::cout << v_obj[0].x << " " << v_obj[0].y << " " << v_obj[0].z << "\n";
 	// std::cout << v_obj[1].x << " " << v_obj[1].y << " " << v_obj[1].z << "\n";
+
+	for (int i = 0;i < amount_of_dots; i++)
+		std::cout << v_obj[i].x << " " << v_obj[i].y << " " << v_obj[i].z << "\n";
+
 
 
 
