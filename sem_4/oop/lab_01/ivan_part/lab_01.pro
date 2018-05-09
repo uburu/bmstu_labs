@@ -29,7 +29,11 @@ SOURCES += \
     math_part.cpp \
     parser.cpp \
     count_points.cpp \
-    draw.cpp
+    draw.cpp \
+    multiply.cpp \
+    move.cpp \
+    rotate.cpp \
+    allocate.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -37,7 +41,11 @@ HEADERS += \
     point.h \
     parser.h \
     count_points.h \
-    draw.h
+    draw.h \
+    multiply.h \
+    move.h \
+    rotate.h \
+    allocate.h
 
 FORMS += \
         mainwindow.ui

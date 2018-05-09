@@ -6,10 +6,9 @@
 #include "point.h"
 #include "mainwindow.h"
 
-int math_part(char *fileName, struct Point **points, struct Polygon **polygons, int *num_polygons)
+int math_part(char *fileName, struct Point **points,  int *num_points, struct Polygon **polygons, int *num_polygons)
 {
     FILE *f;
-    int num_points = 0;
 
     f = fopen(fileName, "r");
 
@@ -17,11 +16,11 @@ int math_part(char *fileName, struct Point **points, struct Polygon **polygons, 
         std::cout << "Can't open file";
     else
     {
-        count(&num_points,f, 'v');
+        count(num_points,f, 'v');
 
         fclose(f);
         f = fopen(fileName, "r");
-        *points = new struct Point[num_points];
+        *points = new struct Point[*num_points];
         parser_points(*points, f);
 
         fclose(f);

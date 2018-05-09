@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsScene>
 
 namespace Ui {
 class MainWindow;
@@ -13,10 +14,19 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    struct Point *points;
+    struct Polygon *polygons;
+    int num_polygons = 0;
+    int num_points = 0;
+    QGraphicsScene *holst;
     ~MainWindow();
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
 
 public:
     Ui::MainWindow *ui;

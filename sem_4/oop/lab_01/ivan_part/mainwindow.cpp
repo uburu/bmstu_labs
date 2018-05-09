@@ -5,12 +5,18 @@
 #include "math_part.h"
 #include "point.h"
 #include "draw.h"
+#include "multiply.h"
+#include "move.h"
+#include "rotate.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    points = nullptr;
+    polygons = nullptr;
+    holst = new QGraphicsScene();
     ui->setupUi(this);
 }
 
@@ -24,16 +30,53 @@ void MainWindow::on_pushButton_clicked()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                     "/Users/ivanmorozov",
                                                     tr("Txt file(*.obj)"));
-    struct Point *points = nullptr;
-    struct Polygon *polygons = nullptr;
-    int num_polygons = 0;
-    QGraphicsScene *holst = new QGraphicsScene();
 
     ui->lineEdit->setText(fileName);
 
-    math_part(fileName.toLatin1().data(), &points, &polygons, &num_polygons);
+    math_part(fileName.toLatin1().data(), &points, &num_points, &polygons, &num_polygons);
 
     draw(holst, points, polygons, num_polygons);
 
     ui->graphicsView->setScene(holst);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    double dx = ui->lineEdit_2->text().toDouble();
+    double dy = ui->lineEdit_3->text().toDouble();
+    double dz = ui->lineEdit_4->text().toDouble();
+
+    move_points(dx, dy, dz, points, num_points+1);
+
+    holst->clear();
+    draw(holst, points, polygons, num_polygons);
+
+    ui->graphicsView->setScene(holst);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    double x_angle = ui->lineEdit_6->text().toDouble();
+    double y_angle = ui->lineEdit_5->text().toDouble();
+    double z_angle = ui->lineEdit_7->text().toDouble();
+
+    for(int i = 0; i < num_points; i++)
+    {
+        std::cout << points[i].x << " " << points[i].y << " " << points[i].z << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    rotate(x_angle, y_angle, z_angle, points, num_points);
+
+    for(int i = 0; i < num_points; i++)
+    {
+        std::cout << points[i].x << " " << points[i].y << " " << points[i].z << std::endl;
+    }
+
+    holst->clear();
+    draw(holst, points, polygons, num_polygons);
+
+    ui->graphicsView->setScene(holst);
+
 }

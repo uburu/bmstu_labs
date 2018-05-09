@@ -20,8 +20,6 @@ int draw(QGraphicsScene *holst, struct Point *points, struct Polygon *polygons, 
                        points[polygons[i].array[j]].x,
                        points[polygons[i].array[j]].y,
                        QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap));
-
-        std::cout << std::endl;
      }
 
     return 0;
