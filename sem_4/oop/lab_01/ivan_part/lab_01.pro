@@ -33,7 +33,8 @@ SOURCES += \
     multiply.cpp \
     move.cpp \
     rotate.cpp \
-    allocate.cpp
+    allocate.cpp \
+    scale.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,7 +46,8 @@ HEADERS += \
     multiply.h \
     move.h \
     rotate.h \
-    allocate.h
+    allocate.h \
+    scale.h
 
 FORMS += \
         mainwindow.ui

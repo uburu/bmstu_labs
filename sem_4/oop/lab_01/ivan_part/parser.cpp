@@ -1,5 +1,6 @@
 #include <iostream>
 #include "point.h"
+#include <cstring>
 #include <cstdlib>
 
 int parser_points(struct Point *points, FILE *f)

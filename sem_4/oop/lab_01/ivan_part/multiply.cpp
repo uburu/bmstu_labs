@@ -1,4 +1,5 @@
 #include "multiply.h"
+#include <iostream>
 
 void multiply(int n1, int m1, double **a, int m2, double **b, double **&result)
 {
