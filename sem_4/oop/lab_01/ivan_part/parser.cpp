@@ -70,7 +70,7 @@ int parser_polygons(struct Polygon *polygons, FILE *f)
                         num = atof(pch);
                         count_polygons++;
                         polygons[i].array =(int*) realloc(polygons[i].array, count_polygons);
-                        polygons[i].array[count_polygons-1] = num;
+                        polygons[i].array[count_polygons-1] = num - 1;
                     }
                     i++;
                     count_polygons = 0;
@@ -82,7 +82,7 @@ int parser_polygons(struct Polygon *polygons, FILE *f)
                     num = atof(pch);
                     count_polygons++;
                     polygons[i].array =(int*) realloc(polygons[i].array, count_polygons);
-                    polygons[i].array[count_polygons-1] = num;
+                    polygons[i].array[count_polygons-1] = num - 1;
                 }
                 pch = strtok(NULL," ");
             }
