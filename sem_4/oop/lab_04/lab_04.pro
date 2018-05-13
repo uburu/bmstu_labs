@@ -24,8 +24,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    doors.cpp \
+    lift.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    doors.h \
+    lift.h
 
 FORMS    += mainwindow.ui
