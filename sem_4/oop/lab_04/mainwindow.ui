@@ -130,8 +130,8 @@
      <rect>
       <x>240</x>
       <y>40</y>
-      <width>181</width>
-      <height>271</height>
+      <width>301</width>
+      <height>401</height>
      </rect>
     </property>
     <property name="title">
@@ -140,7 +140,7 @@
     <widget class="QLCDNumber" name="liftLCD">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>120</x>
        <y>30</y>
        <width>64</width>
        <height>23</height>
@@ -161,7 +161,7 @@
       <rect>
        <x>10</x>
        <y>60</y>
-       <width>161</width>
+       <width>281</width>
        <height>71</height>
       </rect>
      </property>
@@ -200,8 +200,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>150</y>
-       <width>161</width>
+       <y>140</y>
+       <width>281</width>
        <height>20</height>
       </rect>
      </property>
@@ -213,8 +213,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>180</y>
-       <width>161</width>
+       <y>160</y>
+       <width>281</width>
        <height>61</height>
       </rect>
      </property>
@@ -252,20 +252,49 @@
       </item>
      </layout>
     </widget>
-    <zorder>liftLCD</zorder>
-    <zorder>gridLayoutWidget</zorder>
-    <zorder>gridLayoutWidget</zorder>
-    <zorder>gridLayoutWidget</zorder>
-    <zorder>gridLayoutWidget_2</zorder>
-    <zorder>line_2</zorder>
-    <zorder>gridLayoutWidget_2</zorder>
+    <widget class="QTextEdit" name="text">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>270</y>
+       <width>281</width>
+       <height>121</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>250</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Листинг состояний</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>230</y>
+       <width>281</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>560</x>
       <y>40</y>
-      <width>151</width>
+      <width>161</width>
       <height>201</height>
      </rect>
     </property>
