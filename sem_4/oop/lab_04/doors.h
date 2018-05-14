@@ -2,38 +2,33 @@
 #define DOORS_H
 
 #include <QObject>
-#include <QLabel>
-#include <QTimer>
+#include <iostream>
 
+#include "delay.h"
 
 class doors : public QObject
 {
     Q_OBJECT
-    enum doors_state
+    enum doors_states
     {
-        opened_state,
-        closed_state,
-        opening_state,
-        closing_state
+        open_state, //  состояние открыта
+        close_state // состояние закрыта
     };
-private:
-    doors_state state; // состояние дверей
-
 
 public:
-    doors();
+    doors(QObject *parent = nullptr);
 
+private:
+    doors_states state; // состояние
+    static const int del;
 
-// работа с переключеним состояния дверей
 public slots:
-//    void open();    //открыть
-//    void close();   //закрыть
-//    void start_open();    //начать открывать
-//    void start_close();   //начать закрывать
+    void open(); // метод открывает двери и порождает событие откывающиеся двери и переводит объект двери в состояние открыты
+    void close(); // метод закрывает двери и порождает событие закрывающихся дверей и переводит объект двери в состояние закрыты
 
 signals:
-//    void opening();     //двери открыты
-//    void closing();    //двери закрыты
+    void opening_doors(); // событие открывающихся дверей
+    void closing_doors(); // событие закрывающихся дверей
 
 };
 

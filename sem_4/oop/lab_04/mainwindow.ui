@@ -6,348 +6,60 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>200</width>
     <height>600</height>
    </rect>
-  </property>
-  <property name="font">
-   <font>
-    <pointsize>13</pointsize>
-   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QGroupBox" name="liftControlPanel">
+   <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
+      <x>10</x>
+      <y>20</y>
       <width>191</width>
-      <height>311</height>
+      <height>461</height>
      </rect>
     </property>
-    <property name="title">
-     <string>Пульт управления внутри лифта</string>
-    </property>
-    <widget class="QWidget" name="verticalLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>161</width>
-       <height>174</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QCheckBox" name="Floor5">
-        <property name="text">
-         <string>5 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="Floor4">
-        <property name="text">
-         <string>4 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="Floor3">
-        <property name="text">
-         <string>3 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="Floor2">
-        <property name="text">
-         <string>2 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="Floor1">
-        <property name="text">
-         <string>1 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QPushButton" name="ventButton">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>190</y>
-       <width>113</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Вентилятор</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="closeDoorsInLift">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>220</y>
-       <width>131</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Закрыть двери</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="openDoorsInLift">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>250</y>
-       <width>131</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Открыть двери</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="liftFrame">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>40</y>
-      <width>301</width>
-      <height>401</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Лифт</string>
-    </property>
-    <widget class="QLCDNumber" name="liftLCD">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>30</y>
-       <width>64</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="midLineWidth">
-      <number>0</number>
-     </property>
-     <property name="smallDecimalPoint">
-      <bool>false</bool>
-     </property>
-     <property name="intValue" stdset="0">
-      <number>1</number>
-     </property>
-    </widget>
-    <widget class="QWidget" name="gridLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>281</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="1" column="1">
-       <widget class="QProgressBar" name="ventsProgress">
-        <property name="value">
-         <number>0</number>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Выкл.</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Вкл</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="3">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Вентилятор</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="Line" name="line_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>281</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-    <widget class="QWidget" name="gridLayoutWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>160</y>
-       <width>281</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="1">
-       <widget class="QProgressBar" name="doorsProgress">
-        <property name="minimum">
-         <number>0</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Зак.</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Отк.</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="3">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>Двери:</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QTextEdit" name="text">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>270</y>
-       <width>281</width>
-       <height>121</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>250</y>
-       <width>131</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Листинг состояний</string>
-     </property>
-    </widget>
-    <widget class="Line" name="line_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>230</y>
-       <width>281</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>40</y>
-      <width>161</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Вызов лифта на этажах</string>
-    </property>
-    <widget class="QWidget" name="verticalLayoutWidget_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>141</width>
-       <height>171</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="QCheckBox" name="Floor5_2">
-        <property name="text">
-         <string>5 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="Floor4_2">
-        <property name="text">
-         <string>4 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="Floor3_2">
-        <property name="text">
-         <string>3 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="Floor2_2">
-        <property name="text">
-         <string>2 этаж</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="Floor1_2">
-        <property name="text">
-         <string>1 этаж</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="0">
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="text">
+        <string>4 этаж</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>2 этаж</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>1 этаж</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="text">
+        <string>5 этаж</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>3 этаж</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -355,16 +67,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>200</width>
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>Лифт</string>
-    </property>
-   </widget>
-   <addaction name="menu"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

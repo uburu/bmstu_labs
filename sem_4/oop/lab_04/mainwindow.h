@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <iostream>
+
+#include "lift.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -14,17 +18,21 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    bool ventState = false;
 
 private slots:
-    void on_ventButton_clicked();
+    void on_pushButton_clicked();
 
-    void on_closeDoorsInLift_clicked();
+    void on_pushButton_2_clicked();
 
-    void on_openDoorsInLift_clicked();
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
 
 private:
     Ui::MainWindow *ui;
+    lift *lft;
 };
 
 #endif // MAINWINDOW_H
