@@ -25,3 +25,12 @@ void setZeroResult(int n, int m, double **&data)
         }
     }
 }
+
+void delete_matrix_rows(int n, int m, double **&data)
+{
+    for (int i = 0; i < n; i++){
+        data[i] = new double[m];
+    }
+
+    delete data;
+}
