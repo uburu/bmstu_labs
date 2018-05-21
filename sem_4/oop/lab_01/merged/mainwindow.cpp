@@ -14,6 +14,13 @@ static const int ok = 0;
 static const int memory = 1;
 
 
+double scan_field (QLineEdit *obj)
+{
+    QString input = obj->text();
+    return input.toDouble();
+}
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -52,9 +59,9 @@ void MainWindow::on_pushButton_clicked()
 // Трансформация перемещения
 void MainWindow::on_pushButton_2_clicked()
 {
-    double dx = ui->lineEdit_2->text().toDouble();
-    double dy = ui->lineEdit_3->text().toDouble();
-    double dz = ui->lineEdit_4->text().toDouble();
+    double dx = scan_field(ui->lineEdit_2); // ui->lineEdit_2->text().toDouble();
+    double dy = scan_field(ui->lineEdit_3);
+    double dz = scan_field(ui->lineEdit_4);
 
     move_points(dx, dy, dz, points, num_points+1);
 
@@ -67,9 +74,9 @@ void MainWindow::on_pushButton_2_clicked()
 // Трансформация вращения
 void MainWindow::on_pushButton_3_clicked()
 {
-    double x_angle = ui->lineEdit_6->text().toDouble();
-    double y_angle = ui->lineEdit_5->text().toDouble();
-    double z_angle = ui->lineEdit_7->text().toDouble();
+    double x_angle = scan_field(ui->lineEdit_2); // ui->lineEdit_6->text().toDouble();
+    double y_angle = scan_field(ui->lineEdit_5);
+    double z_angle = scan_field(ui->lineEdit_7);
 
     rotate(x_angle, y_angle, z_angle, points, num_points);
 
@@ -83,9 +90,9 @@ void MainWindow::on_pushButton_3_clicked()
 // Трансформация масштабирования
 void MainWindow::on_pushButton_4_clicked()
 {
-    double x = ui->lineEdit_9->text().toDouble();
-    double y = ui->lineEdit_8->text().toDouble();
-    double z = ui->lineEdit_10->text().toDouble();
+    double x = scan_field(ui->lineEdit_9); // ui->lineEdit_9->text().toDouble();
+    double y =scan_field(ui->lineEdit_8);
+    double z = scan_field(ui->lineEdit_10);
 
     scale(x, y, z, points, num_points);
 
