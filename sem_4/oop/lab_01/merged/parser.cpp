@@ -3,6 +3,13 @@
 #include <cstring>
 #include <cstdlib>
 
+static const int x = 0;
+static const int y = 1;
+static const int z = 2;
+
+static const int ok = 0;
+static const int memory = 1;
+
 int parser_points(struct Point *points, FILE *f)
 {
     char *line = NULL;
@@ -11,6 +18,7 @@ int parser_points(struct Point *points, FILE *f)
     int read = 0;
     int i = 0;
     int j = 0;
+    int error = ok;
 
     while (read != -1)
     {
@@ -24,13 +32,13 @@ int parser_points(struct Point *points, FILE *f)
             if(*pch != 'v')
             {
                 num = atof(pch);
-                if(j == 0)
+                if(j == x)
                     points[i].x = num;
-                else if(j == 1)
+                else if(j == y)
                     points[i].y = num;
-                else if(j == 2)
+                else if(j == z)
                     points[i].z = num;
-                if(j == 2)
+                if(j == z)
                 {
                     j = -1;
                     i++;
@@ -41,7 +49,7 @@ int parser_points(struct Point *points, FILE *f)
         }
     }
 
-    return 0;
+    return error;
 }
 
 
@@ -53,6 +61,8 @@ int parser_polygons(struct Polygon *polygons, FILE *f)
     int read = 0;
     int i = 0;
     int count_polygons = 0;
+    int alloc_mem = 10;
+    int error = ok;
 
     while (read != -1)
     {
@@ -60,36 +70,54 @@ int parser_polygons(struct Polygon *polygons, FILE *f)
         if(strchr(line, 'f'))
         {
             char *pch = strtok (line," ");
-            polygons[i].array = nullptr;
-            while (pch != NULL)
+            polygons[i].array = (int*) malloc(alloc_mem * sizeof(int)); // выделил память
+            if(!polygons[i].array) // проверил на выделение
+                error = memory;
+            else
             {
-                if(strchr(pch, '\n'))
+                while (pch != NULL)
                 {
-                    if(atof(pch))
+                    if(strchr(pch, '\n'))
+                    {
+                        if(atof(pch))
+                        {
+                            num = atof(pch);
+                            count_polygons++;
+                            if(count_polygons > alloc_mem)
+                            {
+                                alloc_mem += 10;
+                                polygons[i].array =(int*) realloc(polygons[i].array, alloc_mem);
+                            }
+                            if(!polygons[i].array)
+                                error = memory;
+                            else
+                                polygons[i].array[count_polygons-1] = num - 1;
+                        }
+                        i++;
+                        count_polygons = 0;
+                        pch = strtok (NULL," ");
+                        continue;
+                    }
+                    if(*pch != 'f')
                     {
                         num = atof(pch);
                         count_polygons++;
-                        polygons[i].array =(int*) realloc(polygons[i].array, count_polygons);
-                        polygons[i].array[count_polygons-1] = num - 1;
+                        if(count_polygons > alloc_mem)
+                        {
+                            alloc_mem += 10;
+                            polygons[i].array =(int*) realloc(polygons[i].array, alloc_mem);
+                        }
+                        if(!polygons[i].array)
+                            error = memory;
+                        else
+                            polygons[i].array[count_polygons-1] = num - 1;
                     }
-                    i++;
-                    count_polygons = 0;
-                    pch = strtok (NULL," ");
-                    continue;
+                    pch = strtok(NULL," ");
                 }
-                if(*pch != 'f')
-                {
-                    num = atof(pch);
-                    count_polygons++;
-                    polygons[i].array =(int*) realloc(polygons[i].array, count_polygons);
-                    polygons[i].array[count_polygons-1] = num - 1;
-                }
-                pch = strtok(NULL," ");
+              }
             }
-        }
-
     }
 
-    return 0;
+    return error;
 
 }
